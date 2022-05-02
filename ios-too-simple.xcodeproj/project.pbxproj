@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA18EFC6280601A10048FB52 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC5280601A10048FB52 /* SwiftUIView.swift */; };
+		CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC72806071A0048FB52 /* LoginView.swift */; };
+		CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC9280609280048FB52 /* BalanceCardView.swift */; };
+		CA18EFCC28060A990048FB52 /* UserAccountBalanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFCB28060A990048FB52 /* UserAccountBalanceModel.swift */; };
 		CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1911FF2800C4FA003E1126 /* ios_too_simpleApp.swift */; };
 		CA1912022800C4FA003E1126 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912012800C4FA003E1126 /* ContentView.swift */; };
 		CA1912042800C4FB003E1126 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1912032800C4FB003E1126 /* Assets.xcassets */; };
@@ -16,6 +20,16 @@
 		CA1912162800C4FB003E1126 /* ios_too_simpleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912152800C4FB003E1126 /* ios_too_simpleTests.swift */; };
 		CA1912202800C4FB003E1126 /* ios_too_simpleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA19121F2800C4FB003E1126 /* ios_too_simpleUITests.swift */; };
 		CA1912222800C4FB003E1126 /* ios_too_simpleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912212800C4FB003E1126 /* ios_too_simpleUITestsLaunchTests.swift */; };
+		CA1912392800D861003E1126 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912382800D861003E1126 /* AuthService.swift */; };
+		CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA19123C2800E140003E1126 /* LoginViewModel.swift */; };
+		CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40386F2820389D0086E88D /* GoalViewModel.swift */; };
+		CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40387228203BF00086E88D /* GoalListResponse.swift */; };
+		CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77B287280749C700FBD367 /* GoalResponse.swift */; };
+		CA7E2882282048610017D44E /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2881282048610017D44E /* GoalsView.swift */; };
+		CA7E2884282054BA0017D44E /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2883282054BA0017D44E /* GoalDetailView.swift */; };
+		CA7E2886282058890017D44E /* GoalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2885282058890017D44E /* GoalCardView.swift */; };
+		CAD138DE280742DA000077B6 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD138DD280742DA000077B6 /* GoalService.swift */; };
+		CAD138E12807449B000077B6 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = CAD138E02807449B000077B6 /* JWTDecode */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA18EFC5280601A10048FB52 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		CA18EFC72806071A0048FB52 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CA18EFC9280609280048FB52 /* BalanceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCardView.swift; sourceTree = "<group>"; };
+		CA18EFCB28060A990048FB52 /* UserAccountBalanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountBalanceModel.swift; sourceTree = "<group>"; };
 		CA1911FC2800C4FA003E1126 /* ios-too-simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-too-simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1911FF2800C4FA003E1126 /* ios_too_simpleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_too_simpleApp.swift; sourceTree = "<group>"; };
 		CA1912012800C4FA003E1126 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +66,16 @@
 		CA19121B2800C4FB003E1126 /* ios-too-simpleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-too-simpleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA19121F2800C4FB003E1126 /* ios_too_simpleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_too_simpleUITests.swift; sourceTree = "<group>"; };
 		CA1912212800C4FB003E1126 /* ios_too_simpleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_too_simpleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CA1912382800D861003E1126 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CA19123A2800DEF9003E1126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CA19123C2800E140003E1126 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CA40386F2820389D0086E88D /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
+		CA40387228203BF00086E88D /* GoalListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListResponse.swift; sourceTree = "<group>"; };
+		CA77B287280749C700FBD367 /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
+		CA7E2881282048610017D44E /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		CA7E2883282054BA0017D44E /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
+		CA7E2885282058890017D44E /* GoalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCardView.swift; sourceTree = "<group>"; };
+		CAD138DD280742DA000077B6 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD138E12807449B000077B6 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +127,18 @@
 		CA1911FE2800C4FA003E1126 /* ios-too-simple */ = {
 			isa = PBXGroup;
 			children = (
+				CA40386E282031B20086E88D /* Views */,
+				CA19123B2800E134003E1126 /* Models */,
+				CA19123A2800DEF9003E1126 /* Info.plist */,
+				CA1912372800D849003E1126 /* Services */,
 				CA1911FF2800C4FA003E1126 /* ios_too_simpleApp.swift */,
 				CA1912012800C4FA003E1126 /* ContentView.swift */,
 				CA1912032800C4FB003E1126 /* Assets.xcassets */,
 				CA1912082800C4FB003E1126 /* Persistence.swift */,
 				CA19120A2800C4FB003E1126 /* ios_too_simple.xcdatamodeld */,
 				CA1912052800C4FB003E1126 /* Preview Content */,
+				CA18EFC5280601A10048FB52 /* SwiftUIView.swift */,
+				CA18EFC9280609280048FB52 /* BalanceCardView.swift */,
 			);
 			path = "ios-too-simple";
 			sourceTree = "<group>";
@@ -133,6 +168,54 @@
 			path = "ios-too-simpleUITests";
 			sourceTree = "<group>";
 		};
+		CA1912372800D849003E1126 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA1912382800D861003E1126 /* AuthService.swift */,
+				CAD138DD280742DA000077B6 /* GoalService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CA19123B2800E134003E1126 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA40387128203BE00086E88D /* ResponseModels */,
+				CA19123C2800E140003E1126 /* LoginViewModel.swift */,
+				CA18EFCB28060A990048FB52 /* UserAccountBalanceModel.swift */,
+				CA40386F2820389D0086E88D /* GoalViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CA40386E282031B20086E88D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA18EFC72806071A0048FB52 /* LoginView.swift */,
+				CA7E28872820588F0017D44E /* GoalViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CA40387128203BE00086E88D /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				CA77B287280749C700FBD367 /* GoalResponse.swift */,
+				CA40387228203BF00086E88D /* GoalListResponse.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		CA7E28872820588F0017D44E /* GoalViews */ = {
+			isa = PBXGroup;
+			children = (
+				CA7E2885282058890017D44E /* GoalCardView.swift */,
+				CA7E2883282054BA0017D44E /* GoalDetailView.swift */,
+				CA7E2881282048610017D44E /* GoalsView.swift */,
+			);
+			path = GoalViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +232,9 @@
 			dependencies = (
 			);
 			name = "ios-too-simple";
+			packageProductDependencies = (
+				CAD138E02807449B000077B6 /* JWTDecode */,
+			);
 			productName = "ios-too-simple";
 			productReference = CA1911FC2800C4FA003E1126 /* ios-too-simple.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +307,9 @@
 				Base,
 			);
 			mainGroup = CA1911F32800C4FA003E1126;
+			packageReferences = (
+				CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+			);
 			productRefGroup = CA1911FD2800C4FA003E1126 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,9 +352,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7E2884282054BA0017D44E /* GoalDetailView.swift in Sources */,
 				CA19120C2800C4FB003E1126 /* ios_too_simple.xcdatamodeld in Sources */,
+				CA18EFC6280601A10048FB52 /* SwiftUIView.swift in Sources */,
 				CA1912092800C4FB003E1126 /* Persistence.swift in Sources */,
+				CAD138DE280742DA000077B6 /* GoalService.swift in Sources */,
+				CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */,
+				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
+				CA7E2886282058890017D44E /* GoalCardView.swift in Sources */,
+				CA7E2882282048610017D44E /* GoalsView.swift in Sources */,
+				CA1912392800D861003E1126 /* AuthService.swift in Sources */,
+				CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */,
+				CA18EFCC28060A990048FB52 /* UserAccountBalanceModel.swift in Sources */,
 				CA1912022800C4FA003E1126 /* ContentView.swift in Sources */,
+				CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */,
+				CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */,
+				CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +530,7 @@
 				DEVELOPMENT_TEAM = DJNLLPHUQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ios-too-simple/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,6 +560,7 @@
 				DEVELOPMENT_TEAM = DJNLLPHUQ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ios-too-simple/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -591,6 +695,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CAD138E02807449B000077B6 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;
+			productName = JWTDecode;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CA19120A2800C4FB003E1126 /* ios_too_simple.xcdatamodeld */ = {

@@ -9,6 +9,7 @@ import Foundation
 
 class GoalViewModel: ObservableObject {
     @Published var goalList: GoalListResponse = GoalListResponse(goals: [GoalResponse]())
+    @Published var loading: Bool = false
     
     func getGoals() {
         let defaults = UserDefaults.standard
@@ -19,18 +20,22 @@ class GoalViewModel: ObservableObject {
             return
         }
         
+        loading = true
         GoalService().getGoalsByUserId(
             userId: userId ?? "",
             bearerToken: bearerToken ?? "") { result in
                 switch result {
                 case .failure(let error):
                     print(error)
+                    self.loading = false
                 case .success(let apiResponse):
                     let success = apiResponse.success ?? false
                     if (!success) {
+                        self.loading = false
                         print("non success code")
                     } else {
                         DispatchQueue.main.async {
+                            self.loading = false
                             self.goalList.goals = apiResponse.goals
                         }
                     }

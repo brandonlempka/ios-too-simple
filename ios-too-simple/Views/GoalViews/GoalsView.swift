@@ -13,15 +13,14 @@ struct GoalsView: View {
     
     var body: some View {
         NavigationView {
+            if (goalVM.loading) {
+                ProgressView()
+            }
             List {
                 ForEach(goalVM.goalList.goals) { goal in
-                    NavigationLink(destination: Text(goal.amountContributed.description)) {
+                    NavigationLink(destination: GoalDetailView(existingGoal: goal)) {
                         GoalCardView(goal: goal)
                     }
-                    //                    NavigationLink(destination: Text(goal.goalName)) {
-                    //                        BalanceCardView
-                    //                    }
-                    //                        .listRowBackground(Color("TooSimplePurple"))
                 }
             }
             .navigationTitle("Goals")

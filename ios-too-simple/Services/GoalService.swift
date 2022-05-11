@@ -25,13 +25,13 @@ class GoalService {
             
             let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
                 guard let data = data, error == nil else {
-                    print (error)
+                    print (error!)
                     return
                 }
 
                 do {
                     let decoder = JSONDecoder()
-                    let dateFormatter = DateFormatter()
+                    //let dateFormatter = DateFormatter()
 //                    dateFormatter.timeStyle = .
                     decoder.dateDecodingStrategy = .iso8601
                     let response = try decoder.decode(GoalListResponse.self, from: data)

@@ -30,7 +30,7 @@ struct GoalCardView: View {
                 .accentColor(Color("TooSimpleTeal"))
                 .scaleEffect(x: 1, y: 3, anchor: .center)
             
-            Text("Next contribution \(String(format: "$%.2f", goal.amountContributed)) on \(goal.nextContributionDate ?? "")")
+            Text("Next contribution \(String(format: "$%.2f", goal.amountContributed)) on \(goal.nextContributionDate )")
                 .font(.caption)
         }
         .padding()

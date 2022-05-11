@@ -31,7 +31,7 @@ struct ContentView: View {
                     Text("Home")
                 }
                 
-                AccountsView()
+                AccountsView(plaidAccountsVM: PlaidAccountViewModel(), addMode: false)
                     .tabItem {
                         Image(systemName: "building.columns.fill")
                         Text("Accounts")

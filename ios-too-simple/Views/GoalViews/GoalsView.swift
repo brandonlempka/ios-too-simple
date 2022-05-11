@@ -13,7 +13,7 @@ struct GoalsView: View {
     
     var body: some View {
         NavigationView {
-            if (goalVM.loading) {
+            if goalVM.loading {
                 ProgressView()
             }
             List {

@@ -35,7 +35,7 @@ class AuthService {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
                 guard let data = data, error == nil else {
-                    print (error)
+                    print (error!)
                     return
                 }
                 

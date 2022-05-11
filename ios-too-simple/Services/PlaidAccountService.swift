@@ -7,14 +7,14 @@
 
 import Foundation
 
-class AccountService {
-    var goals = GoalListResponse(goals: [GoalResponse]())
+class PlaidAccountService {
+    var plaidAccounts = PlaidAccountListResponse(plaidAccounts: [PlaidAccountResponse]())
     
-    func getGoalsByUserId(
+    func getPlaidAccountsByUserId(
         userId: String,
         bearerToken: String,
-        completion: @escaping (Result<GoalListResponse, Error>) -> Void) {
-            guard let url = URL(string: "https://api.brandonlempka.com/PlaidAccounts/Goals/userId/\(userId)") else {
+        completion: @escaping (Result<PlaidAccountListResponse, Error>) -> Void) {
+            guard let url = URL(string: "https://api.brandonlempka.com/api/PlaidAccounts/userId/\(userId)") else {
                 return
             }
             
@@ -25,16 +25,16 @@ class AccountService {
             
             let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
                 guard let data = data, error == nil else {
-                    print (error)
+                    print (error!)
                     return
                 }
                 
                 do {
                     let decoder = JSONDecoder()
-                    let dateFormatter = DateFormatter()
+                    //let dateFormatter = DateFormatter()
                     //                    dateFormatter.timeStyle = .
                     decoder.dateDecodingStrategy = .iso8601
-                    let response = try decoder.decode(GoalListResponse.self, from: data)
+                    let response = try decoder.decode(PlaidAccountListResponse.self, from: data)
                     print(response)
                     completion(.success(response))
                 } catch {

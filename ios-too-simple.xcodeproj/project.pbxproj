@@ -37,7 +37,11 @@
 		CA7E289D28206DE30017D44E /* ts-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA7E288C28206DE20017D44E /* ts-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E28A22820B3D00017D44E /* GoalEditView.swift */; };
 		CAB4BE18282C2E2E0026301D /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE17282C2E2E0026301D /* AccountsView.swift */; };
-		CAB4BE1A282C2ED00026301D /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE19282C2ED00026301D /* AccountService.swift */; };
+		CAB4BE1A282C2ED00026301D /* PlaidAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE19282C2ED00026301D /* PlaidAccountService.swift */; };
+		CAB4BE1E282C3BAB0026301D /* PlaidAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE1D282C3BAB0026301D /* PlaidAccountResponse.swift */; };
+		CAB4BE20282C3BB60026301D /* PlaidAccountListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE1F282C3BB60026301D /* PlaidAccountListResponse.swift */; };
+		CAB4BE22282C3D180026301D /* PlaidAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE21282C3D180026301D /* PlaidAccountViewModel.swift */; };
+		CAB4BE25282C4D580026301D /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = CAB4BE24282C4D580026301D /* LinkKit */; };
 		CAD138DE280742DA000077B6 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD138DD280742DA000077B6 /* GoalService.swift */; };
 		CAD138E12807449B000077B6 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = CAD138E02807449B000077B6 /* JWTDecode */; };
 /* End PBXBuildFile section */
@@ -115,7 +119,10 @@
 		CA7E289828206DE30017D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7E28A22820B3D00017D44E /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
 		CAB4BE17282C2E2E0026301D /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
-		CAB4BE19282C2ED00026301D /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		CAB4BE19282C2ED00026301D /* PlaidAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAccountService.swift; sourceTree = "<group>"; };
+		CAB4BE1D282C3BAB0026301D /* PlaidAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAccountResponse.swift; sourceTree = "<group>"; };
+		CAB4BE1F282C3BB60026301D /* PlaidAccountListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAccountListResponse.swift; sourceTree = "<group>"; };
+		CAB4BE21282C3D180026301D /* PlaidAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAccountViewModel.swift; sourceTree = "<group>"; };
 		CAD138DD280742DA000077B6 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD138E12807449B000077B6 /* JWTDecode in Frameworks */,
+				CAB4BE25282C4D580026301D /* LinkKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +234,7 @@
 			children = (
 				CA1912382800D861003E1126 /* AuthService.swift */,
 				CAD138DD280742DA000077B6 /* GoalService.swift */,
-				CAB4BE19282C2ED00026301D /* AccountService.swift */,
+				CAB4BE19282C2ED00026301D /* PlaidAccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				CA19123C2800E140003E1126 /* LoginViewModel.swift */,
 				CA18EFCB28060A990048FB52 /* UserAccountBalanceModel.swift */,
 				CA40386F2820389D0086E88D /* GoalViewModel.swift */,
+				CAB4BE21282C3D180026301D /* PlaidAccountViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,8 +264,8 @@
 		CA40387128203BE00086E88D /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
-				CA77B287280749C700FBD367 /* GoalResponse.swift */,
-				CA40387228203BF00086E88D /* GoalListResponse.swift */,
+				CAB4BE1C282C3B9B0026301D /* PlaidAccounts */,
+				CAB4BE1B282C3B930026301D /* Goals */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
@@ -300,6 +309,24 @@
 			path = AccountViews;
 			sourceTree = "<group>";
 		};
+		CAB4BE1B282C3B930026301D /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				CA77B287280749C700FBD367 /* GoalResponse.swift */,
+				CA40387228203BF00086E88D /* GoalListResponse.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		CAB4BE1C282C3B9B0026301D /* PlaidAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				CAB4BE1D282C3BAB0026301D /* PlaidAccountResponse.swift */,
+				CAB4BE1F282C3BB60026301D /* PlaidAccountListResponse.swift */,
+			);
+			path = PlaidAccounts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -320,6 +347,7 @@
 			name = "ios-too-simple";
 			packageProductDependencies = (
 				CAD138E02807449B000077B6 /* JWTDecode */,
+				CAB4BE24282C4D580026301D /* LinkKit */,
 			);
 			productName = "ios-too-simple";
 			productReference = CA1911FC2800C4FA003E1126 /* ios-too-simple.app */;
@@ -415,6 +443,7 @@
 			mainGroup = CA1911F32800C4FA003E1126;
 			packageReferences = (
 				CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
+				CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */,
 			);
 			productRefGroup = CA1911FD2800C4FA003E1126 /* Products */;
 			projectDirPath = "";
@@ -476,16 +505,19 @@
 				CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */,
 				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
 				CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */,
+				CAB4BE22282C3D180026301D /* PlaidAccountViewModel.swift in Sources */,
 				CA7E2886282058890017D44E /* GoalCardView.swift in Sources */,
 				CA7E2882282048610017D44E /* GoalsView.swift in Sources */,
 				CA1912392800D861003E1126 /* AuthService.swift in Sources */,
 				CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */,
+				CAB4BE1E282C3BAB0026301D /* PlaidAccountResponse.swift in Sources */,
+				CAB4BE20282C3BB60026301D /* PlaidAccountListResponse.swift in Sources */,
 				CA18EFCC28060A990048FB52 /* UserAccountBalanceModel.swift in Sources */,
 				CA1912022800C4FA003E1126 /* ContentView.swift in Sources */,
 				CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */,
 				CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */,
 				CA7E289A28206DE30017D44E /* ts_widget.intentdefinition in Sources */,
-				CAB4BE1A282C2ED00026301D /* AccountService.swift in Sources */,
+				CAB4BE1A282C2ED00026301D /* PlaidAccountService.swift in Sources */,
 				CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
 			);
@@ -895,6 +927,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/plaid/plaid-link-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/auth0/JWTDecode.swift.git";
@@ -906,6 +946,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CAB4BE24282C4D580026301D /* LinkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */;
+			productName = LinkKit;
+		};
 		CAD138E02807449B000077B6 /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */;

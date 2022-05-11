@@ -8,6 +8,15 @@
         "revision" : "3cd207fb9e943b6168a117baa3936c823204c2dc",
         "version" : "2.6.3"
       }
+    },
+    {
+      "identity" : "plaid-link-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/plaid/plaid-link-ios",
+      "state" : {
+        "revision" : "0a1eb74b4a9b69fe72e1ec1e3ef60ac490947bf4",
+        "version" : "3.0.0"
+      }
     }
   ],
   "version" : 2

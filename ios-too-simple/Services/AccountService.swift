@@ -14,7 +14,7 @@ class AccountService {
         userId: String,
         bearerToken: String,
         completion: @escaping (Result<GoalListResponse, Error>) -> Void) {
-            guard let url = URL(string: "https://api.brandonlempka.com/api/Goals/userId/\(userId)") else {
+            guard let url = URL(string: "https://api.brandonlempka.com/PlaidAccounts/Goals/userId/\(userId)") else {
                 return
             }
             

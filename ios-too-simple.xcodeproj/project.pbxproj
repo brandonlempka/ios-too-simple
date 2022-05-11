@@ -36,6 +36,8 @@
 		CA7E289A28206DE30017D44E /* ts_widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA7E289528206DE20017D44E /* ts_widget.intentdefinition */; };
 		CA7E289D28206DE30017D44E /* ts-widgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA7E288C28206DE20017D44E /* ts-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E28A22820B3D00017D44E /* GoalEditView.swift */; };
+		CAB4BE18282C2E2E0026301D /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE17282C2E2E0026301D /* AccountsView.swift */; };
+		CAB4BE1A282C2ED00026301D /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB4BE19282C2ED00026301D /* AccountService.swift */; };
 		CAD138DE280742DA000077B6 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD138DD280742DA000077B6 /* GoalService.swift */; };
 		CAD138E12807449B000077B6 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = CAD138E02807449B000077B6 /* JWTDecode */; };
 /* End PBXBuildFile section */
@@ -112,6 +114,8 @@
 		CA7E289628206DE30017D44E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA7E289828206DE30017D44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7E28A22820B3D00017D44E /* GoalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalEditView.swift; sourceTree = "<group>"; };
+		CAB4BE17282C2E2E0026301D /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		CAB4BE19282C2ED00026301D /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		CAD138DD280742DA000077B6 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +226,7 @@
 			children = (
 				CA1912382800D861003E1126 /* AuthService.swift */,
 				CAD138DD280742DA000077B6 /* GoalService.swift */,
+				CAB4BE19282C2ED00026301D /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 		CA40386E282031B20086E88D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CAB4BE16282C2E150026301D /* AccountViews */,
 				CA18EFC72806071A0048FB52 /* LoginView.swift */,
 				CA7E28872820588F0017D44E /* GoalViews */,
 			);
@@ -284,6 +290,14 @@
 				CA7E289828206DE30017D44E /* Info.plist */,
 			);
 			path = "ts-widget";
+			sourceTree = "<group>";
+		};
+		CAB4BE16282C2E150026301D /* AccountViews */ = {
+			isa = PBXGroup;
+			children = (
+				CAB4BE17282C2E2E0026301D /* AccountsView.swift */,
+			);
+			path = AccountViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB4BE18282C2E2E0026301D /* AccountsView.swift in Sources */,
 				CA7E2884282054BA0017D44E /* GoalDetailView.swift in Sources */,
 				CA19120C2800C4FB003E1126 /* ios_too_simple.xcdatamodeld in Sources */,
 				CA18EFC6280601A10048FB52 /* SwiftUIView.swift in Sources */,
@@ -470,6 +485,7 @@
 				CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */,
 				CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */,
 				CA7E289A28206DE30017D44E /* ts_widget.intentdefinition in Sources */,
+				CAB4BE1A282C2ED00026301D /* AccountService.swift in Sources */,
 				CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
 			);

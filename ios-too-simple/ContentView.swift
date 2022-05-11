@@ -31,6 +31,11 @@ struct ContentView: View {
                     Text("Home")
                 }
                 
+                AccountsView()
+                    .tabItem {
+                        Image(systemName: "building.columns.fill")
+                        Text("Accounts")
+                    }
                 GoalsView(goalVM: GoalViewModel(), addMode: false)
                     .tabItem {
                         Image(systemName: "text.alignleft")

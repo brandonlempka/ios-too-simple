@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA03A80428344F6700921CEA /* PlaidTransactionListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA03A80328344F6700921CEA /* PlaidTransactionListResponse.swift */; };
+		CA03A80628344F6F00921CEA /* PlaidTransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA03A80528344F6F00921CEA /* PlaidTransactionResponse.swift */; };
+		CA03A8092834553600921CEA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA03A8082834553600921CEA /* HomeView.swift */; };
+		CA03A80C28356AAB00921CEA /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA03A80B28356AAB00921CEA /* TransactionCardView.swift */; };
 		CA18EFC6280601A10048FB52 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC5280601A10048FB52 /* SwiftUIView.swift */; };
 		CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC72806071A0048FB52 /* LoginView.swift */; };
 		CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18EFC9280609280048FB52 /* BalanceCardView.swift */; };
@@ -85,6 +89,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA03A80328344F6700921CEA /* PlaidTransactionListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidTransactionListResponse.swift; sourceTree = "<group>"; };
+		CA03A80528344F6F00921CEA /* PlaidTransactionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidTransactionResponse.swift; sourceTree = "<group>"; };
+		CA03A8082834553600921CEA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CA03A80B28356AAB00921CEA /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
 		CA18EFC5280601A10048FB52 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		CA18EFC72806071A0048FB52 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CA18EFC9280609280048FB52 /* BalanceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCardView.swift; sourceTree = "<group>"; };
@@ -162,6 +170,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA03A80228344F5500921CEA /* PlaidTransactions */ = {
+			isa = PBXGroup;
+			children = (
+				CA03A80328344F6700921CEA /* PlaidTransactionListResponse.swift */,
+				CA03A80528344F6F00921CEA /* PlaidTransactionResponse.swift */,
+			);
+			path = PlaidTransactions;
+			sourceTree = "<group>";
+		};
+		CA03A807283454CB00921CEA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CA03A8082834553600921CEA /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CA03A80A28356A8F00921CEA /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				CA03A80B28356AAB00921CEA /* TransactionCardView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
 		CA1911F32800C4FA003E1126 = {
 			isa = PBXGroup;
 			children = (
@@ -254,9 +287,11 @@
 		CA40386E282031B20086E88D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CAB4BE16282C2E150026301D /* AccountViews */,
+				CA03A80A28356A8F00921CEA /* Transactions */,
+				CA03A807283454CB00921CEA /* Home */,
+				CAB4BE16282C2E150026301D /* Accounts */,
 				CA18EFC72806071A0048FB52 /* LoginView.swift */,
-				CA7E28872820588F0017D44E /* GoalViews */,
+				CA7E28872820588F0017D44E /* Goals */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,13 +299,14 @@
 		CA40387128203BE00086E88D /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
+				CA03A80228344F5500921CEA /* PlaidTransactions */,
 				CAB4BE1C282C3B9B0026301D /* PlaidAccounts */,
 				CAB4BE1B282C3B930026301D /* Goals */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
 		};
-		CA7E28872820588F0017D44E /* GoalViews */ = {
+		CA7E28872820588F0017D44E /* Goals */ = {
 			isa = PBXGroup;
 			children = (
 				CA7E2885282058890017D44E /* GoalCardView.swift */,
@@ -278,7 +314,7 @@
 				CA7E2881282048610017D44E /* GoalsView.swift */,
 				CA7E28A22820B3D00017D44E /* GoalEditView.swift */,
 			);
-			path = GoalViews;
+			path = Goals;
 			sourceTree = "<group>";
 		};
 		CA7E288D28206DE20017D44E /* Frameworks */ = {
@@ -301,12 +337,12 @@
 			path = "ts-widget";
 			sourceTree = "<group>";
 		};
-		CAB4BE16282C2E150026301D /* AccountViews */ = {
+		CAB4BE16282C2E150026301D /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
 				CAB4BE17282C2E2E0026301D /* AccountsView.swift */,
 			);
-			path = AccountViews;
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		CAB4BE1B282C3B930026301D /* Goals */ = {
@@ -496,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA03A8092834553600921CEA /* HomeView.swift in Sources */,
 				CAB4BE18282C2E2E0026301D /* AccountsView.swift in Sources */,
 				CA7E2884282054BA0017D44E /* GoalDetailView.swift in Sources */,
 				CA19120C2800C4FB003E1126 /* ios_too_simple.xcdatamodeld in Sources */,
@@ -510,6 +547,8 @@
 				CA7E2882282048610017D44E /* GoalsView.swift in Sources */,
 				CA1912392800D861003E1126 /* AuthService.swift in Sources */,
 				CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */,
+				CA03A80C28356AAB00921CEA /* TransactionCardView.swift in Sources */,
+				CA03A80628344F6F00921CEA /* PlaidTransactionResponse.swift in Sources */,
 				CAB4BE1E282C3BAB0026301D /* PlaidAccountResponse.swift in Sources */,
 				CAB4BE20282C3BB60026301D /* PlaidAccountListResponse.swift in Sources */,
 				CA18EFCC28060A990048FB52 /* UserAccountBalanceModel.swift in Sources */,
@@ -519,6 +558,7 @@
 				CA7E289A28206DE30017D44E /* ts_widget.intentdefinition in Sources */,
 				CAB4BE1A282C2ED00026301D /* PlaidAccountService.swift in Sources */,
 				CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */,
+				CA03A80428344F6700921CEA /* PlaidTransactionListResponse.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,6 +737,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-too-simple/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Too Simple";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -728,6 +769,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ios-too-simple/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Too Simple";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

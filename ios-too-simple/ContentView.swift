@@ -16,16 +16,7 @@ struct ContentView: View {
             LoginView(loginVM: loginVM)
         } else {
             TabView {
-                VStack {
-                    BalanceCardView()
-                    Button("Logout") {
-                        loginVM.logout()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .tint(Color("TooSimplePurple"))
-                    .frame(width: 350, height: 50, alignment: .center)
-                }
+                HomeView(plaidAccountsVM: PlaidAccountViewModel(), accountBreakdown: false)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
@@ -41,6 +32,17 @@ struct ContentView: View {
                         Image(systemName: "text.alignleft")
                         Text("Goals")
                     }
+                Button("Logout") {
+                    loginVM.logout()
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .tint(Color("TooSimplePurple"))
+                .frame(width: 350, height: 50, alignment: .center)
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
             }
             
         }

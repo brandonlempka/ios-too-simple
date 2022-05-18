@@ -14,13 +14,12 @@ struct GoalCardView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(goal.goalName)
-                    .font(.headline)
                 
                 Spacer()
                 
                 Text(String(format: "$%.2f", goal.amountContributed))
-                    .font(.headline)
             }
+            .font(.headline)
             
             Spacer()
             

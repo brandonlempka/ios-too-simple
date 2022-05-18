@@ -9,6 +9,7 @@ import Foundation
 
 class PlaidAccountService {
     var plaidAccounts = PlaidAccountListResponse(plaidAccounts: [PlaidAccountResponse]())
+    var plaidTransactions = PlaidTransactionListResponse(transactions: [PlaidTransactionResponse]())
     
     func getPlaidAccountsByUserId(
         userId: String,
@@ -38,6 +39,44 @@ class PlaidAccountService {
                     print(response)
                     completion(.success(response))
                 } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    
+    func getPlaidTransactionsByUserId(
+        userId: String,
+        bearerToken: String,
+        completion: @escaping (Result<PlaidTransactionListResponse, Error>) -> Void) {
+            guard let url = URL(string: "https://api.brandonlempka.com/api/PlaidTransactions/searchTransactions") else {
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue( "Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+            let body: [String: AnyHashable] = [
+                "userId": userId
+            ]
+            
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+                guard let data = data, error == nil else {
+                    print (error!)
+                    return
+                }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    //let dateFormatter = DateFormatter()
+                    //                    dateFormatter.timeStyle = .
+                    decoder.dateDecodingStrategy = .iso8601
+                    let response = try decoder.decode(PlaidTransactionListResponse.self, from: data)
+                    print(response)
+                    completion(.success(response))
+                } catch {  
                     print(error)
                 }
             })

@@ -19,7 +19,7 @@ struct PlaidAccountResponse: Codable, Identifiable {
     var name: String
     var nickName: String?
     var currentBalance: Double
-    var availableBalance: Double
+    var availableBalance: Double?
     var creditLimit: Double?
     var currencyCode: String
     var accessToken: String

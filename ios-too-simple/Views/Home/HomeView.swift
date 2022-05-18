@@ -14,44 +14,51 @@ struct HomeView: View {
     var body: some View {
         VStack {
             NavigationView {
-                if (plaidAccountsVM.loading) {
+                if plaidAccountsVM.loading {
                     ProgressView()
                 }
-                List {
-                    ForEach(plaidAccountsVM.transactionList.transactions) { transaction in
-                        NavigationLink(destination: Text(transaction.name ?? "hi")) {
-                            TransactionCardView(plaidTransaction: transaction)
-                        }
-                    }
-                }
-                .refreshable {
-                    plaidAccountsVM.getPlaidTransactions()
-                }
-                .navigationBarTitle {
-                    Button(action: {
-                        self.accountBreakdown = true
-                    }) {
-                        HStack {
-                            VStack {
-                                Text(String(format: "$%.2f", 123.45))
-                                    .font(.headline)
-                                    .foregroundColor(-123.45 > 0
-                                                      ? .black
-                                                      : .red)
-                                Text("Ready to Spend")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
+                if let transactions = plaidAccountsVM.transactionList.transactions {
+                    List {
+                        if !plaidAccountsVM.transactionsFound {
+                            Text("No transactions found.")
+                        } else {
+                            ForEach(transactions) { transaction in
+                                NavigationLink(destination: Text(transaction.name ?? "hi")) {
+                                    TransactionCardView(plaidTransaction: transaction)
+                                }
                             }
-                            
-                            Image(systemName: "info.circle")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(Color("TooSimpleTeal"))
                         }
                     }
-                    .sheet(isPresented: $accountBreakdown, content: {
-                        Text("Breakdown could go here.")
-                    })
+                    .refreshable {
+                        plaidAccountsVM.forcePlaidSync()
+                    }
+                    .navigationBarTitle {
+                        Button(action: {
+                            self.accountBreakdown = true
+                        }) {
+                            HStack {
+                                VStack {
+                                    Text(String(format: "$%.2f", 123.45))
+                                        .font(.headline)
+                                        .foregroundColor(-123.45 > 0
+                                                          ? .black
+                                                          : .red)
+                                    Text("Ready to Spend")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                                
+                                Image(systemName: "info.circle")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(Color("TooSimpleTeal"))
+                            }
+                        }
+                        .sheet(isPresented: $accountBreakdown, content: {
+                            Text("Breakdown could go here.")
+                        })
+                    }
+                    
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())

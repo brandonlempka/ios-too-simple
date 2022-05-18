@@ -29,8 +29,8 @@ struct TransactionCardView: View {
                 
                 Spacer()
                 
-                Text(String(format: "$%.2f", plaidTransaction.amount))
-                    .foregroundColor(plaidTransaction.amount < 0
+                Text(String(format: "$%.2f", plaidTransaction.amount * -1))
+                    .foregroundColor(plaidTransaction.amount * -1 < 0
                                      ? .black
                                      : .green)
             }

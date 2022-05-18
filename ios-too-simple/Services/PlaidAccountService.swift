@@ -62,6 +62,47 @@ class PlaidAccountService {
             ]
             
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+                guard let data = data, error == nil else {
+                    print (error!)
+                    return
+                }
+                
+                do {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if httpResponse.statusCode == 204 {
+                            completion(.success(PlaidTransactionListResponse(success: true, status: 204)))
+                        } else {
+                            let decoder = JSONDecoder()
+                            //let dateFormatter = DateFormatter()
+                            //                    dateFormatter.timeStyle = .
+                            decoder.dateDecodingStrategy = .iso8601
+                            
+                            let response = try decoder.decode(PlaidTransactionListResponse.self, from: data)
+                            print(response)
+                            completion(.success(response))
+                        }
+                    }
+                } catch {  
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    
+    func forcePlaidResync(
+        userId: String,
+        bearerToken: String,
+        completion: @escaping (Result<BaseResponse, Error>) -> Void) {
+            guard let url = URL(string: "https://api.brandonlempka.com/api/Plaid/forcePlaidSync/\(userId)") else {
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue( "Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+            
             let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
                 guard let data = data, error == nil else {
                     print (error!)
@@ -73,10 +114,10 @@ class PlaidAccountService {
                     //let dateFormatter = DateFormatter()
                     //                    dateFormatter.timeStyle = .
                     decoder.dateDecodingStrategy = .iso8601
-                    let response = try decoder.decode(PlaidTransactionListResponse.self, from: data)
+                    let response = try decoder.decode(BaseResponse.self, from: data)
                     print(response)
                     completion(.success(response))
-                } catch {  
+                } catch {
                     print(error)
                 }
             })

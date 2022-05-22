@@ -83,7 +83,45 @@ class PlaidAccountService {
                             completion(.success(response))
                         }
                     }
-                } catch {  
+                } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    
+    func getDashboardByUserId(
+        userId: String,
+        bearerToken: String,
+        completion: @escaping (Result<DashboardResponse, Error>) -> Void) {
+            guard let url = URL(string: "https://api.brandonlempka.com/api/Budgeting/getDashboard/\(userId)") else {
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue( "Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+            
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+                guard let data = data, error == nil else {
+                    print (error!)
+                    return
+                }
+                
+                do {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        let decoder = JSONDecoder()
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                        
+                        let response = try decoder.decode(DashboardResponse.self, from: data)
+                        print(response)
+                        completion(.success(response))
+                    }
+                } catch {
                     print(error)
                 }
             })

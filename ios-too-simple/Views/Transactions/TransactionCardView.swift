@@ -11,44 +11,58 @@ struct TransactionCardView: View {
     let plaidTransaction: PlaidTransactionResponse
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(plaidTransaction.name ?? "Unknown merchant")
-
-                if plaidTransaction.isPending {
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(plaidTransaction.merchantName ?? plaidTransaction.name ?? "Unknown")
+                        .fontWeight(.semibold)
                     
-                    Text("Pending")
-                        .foregroundColor(.red)
-                        .font(.subheadline)
-                        .padding(2)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(.red, lineWidth: 1)
-                        )
+                    if plaidTransaction.isPending {
+                        Text("Pending")
+                            .foregroundColor(.red)
+                            .font(.subheadline)
+                            .padding(2)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(.red, lineWidth: 1)
+                            )
+                    }
                 }
+                .font(.subheadline)
                 
-                Spacer()
-                
-                Text(String(format: "$%.2f", plaidTransaction.amount * -1))
-                    .foregroundColor(plaidTransaction.amount * -1 < 0
-                                     ? .black
-                                     : .green)
-            }
-            .font(.subheadline)
-            
-            HStack {
-                if let merchantName = plaidTransaction.merchantName {
-                    Text(merchantName)
-                        .font(.subheadline)
+                HStack {
+                    
+                    if let transactionDate = plaidTransaction.transactionDateDisplay {
+                        Text(transactionDate)
+                    }
+                    
+                    if let accountName = plaidTransaction.plaidAccountDisplayName {
+                        Text("•")
+                        Text(accountName)
+                        
+                    }
+                }
+                .foregroundColor(.gray)
+                .font(.subheadline)
+                if let goalName = plaidTransaction.spendingFromGoalId {
+                    Text("Spent from \(goalName)")
                         .foregroundColor(.gray)
+                        .font(.subheadline)
                 }
                 
-                Spacer()
-                
-                Text(plaidTransaction.plaidAccountDisplayName)
+            }
+            
+            Spacer()
+            
+            if plaidTransaction.amount * -1 > 0 {
+                Text(String(format: "$%.2f", plaidTransaction.amount * -1))
+                    .foregroundColor(.green)
+                    .fontWeight(.semibold)
+            } else {
+                Text(String(format: "$%.2f", plaidTransaction.amount))
+                    .fontWeight(.semibold)
             }
         }
-        .padding(5)
     }
 }
 

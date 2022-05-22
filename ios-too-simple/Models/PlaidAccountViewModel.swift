@@ -13,6 +13,8 @@ class PlaidAccountViewModel: ObservableObject {
     @Published var loading: Bool = false
     @Published var accountsFound: Bool = false
     @Published var transactionsFound: Bool = false
+    @Published var dashboard: DashboardResponse = DashboardResponse(transactions: [PlaidTransactionResponse]())
+    @Published var lastUpdatedDisplay: String = ""
     
     func getPlaidAccounts() {
         let defaults = UserDefaults.standard
@@ -78,6 +80,49 @@ class PlaidAccountViewModel: ObservableObject {
                                 self.transactionsFound = true
                                 self.transactionList.transactions = apiResponse.transactions
                             }
+                        }
+                    }
+                }
+            }
+    }
+    
+    func getDashboard() {
+        let defaults = UserDefaults.standard
+        let userId = defaults.string(forKey: "userId")
+        let bearerToken = defaults.string(forKey: "jwt")
+        
+        if (userId == nil || bearerToken == nil) {
+            return
+        }
+        
+        loading = true
+        PlaidAccountService().getDashboardByUserId(
+            userId: userId ?? "",
+            bearerToken: bearerToken ?? "") { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                    self.loading = false
+                case .success(let apiResponse):
+                    let success = apiResponse.success ?? false
+                    if (!success) {
+                        self.loading = false
+                        print("non success code")
+                    } else {
+                        DispatchQueue.main.async {
+                            self.loading = false
+                            if apiResponse.transactions != nil && !apiResponse.transactions!.isEmpty {
+                                self.transactionsFound = true
+                                self.transactionList.transactions = apiResponse.transactions
+                                if let lastUpdated = apiResponse.lastUpdated {
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateStyle = .medium
+                                    dateFormatter.timeStyle = .medium
+                                    dateFormatter.locale = Locale(identifier: "en_US")
+                                    self.lastUpdatedDisplay = dateFormatter.string(from: lastUpdated)
+                                }
+                            }
+                            self.dashboard = apiResponse
                         }
                     }
                 }

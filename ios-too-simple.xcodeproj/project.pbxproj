@@ -29,6 +29,9 @@
 		CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA19123C2800E140003E1126 /* LoginViewModel.swift */; };
 		CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40386F2820389D0086E88D /* GoalViewModel.swift */; };
 		CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40387228203BF00086E88D /* GoalListResponse.swift */; };
+		CA427B33283AC0EC00A08868 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B32283AC0EC00A08868 /* DateFormatter.swift */; };
+		CA427B35283ADB6300A08868 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B34283ADB6300A08868 /* TransactionDetailView.swift */; };
+		CA62CD162838289800849D14 /* DashboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62CD152838289800849D14 /* DashboardResponse.swift */; };
 		CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77B287280749C700FBD367 /* GoalResponse.swift */; };
 		CA7E2882282048610017D44E /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2881282048610017D44E /* GoalsView.swift */; };
 		CA7E2884282054BA0017D44E /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2883282054BA0017D44E /* GoalDetailView.swift */; };
@@ -116,6 +119,9 @@
 		CA19123C2800E140003E1126 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CA40386F2820389D0086E88D /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		CA40387228203BF00086E88D /* GoalListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListResponse.swift; sourceTree = "<group>"; };
+		CA427B32283AC0EC00A08868 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		CA427B34283ADB6300A08868 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
+		CA62CD152838289800849D14 /* DashboardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardResponse.swift; sourceTree = "<group>"; };
 		CA77B287280749C700FBD367 /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
 		CA7E2881282048610017D44E /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
 		CA7E2883282054BA0017D44E /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
@@ -193,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				CA03A80B28356AAB00921CEA /* TransactionCardView.swift */,
+				CA427B34283ADB6300A08868 /* TransactionDetailView.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 		CA1911FE2800C4FA003E1126 /* ios-too-simple */ = {
 			isa = PBXGroup;
 			children = (
+				CA427B31283AC0DE00A08868 /* Extensions */,
 				CA40386E282031B20086E88D /* Views */,
 				CA19123B2800E134003E1126 /* Models */,
 				CA19123A2800DEF9003E1126 /* Info.plist */,
@@ -309,12 +317,29 @@
 		CA40387128203BE00086E88D /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
+				CA62CD142838288A00849D14 /* Dashboard */,
 				CA03A8122835992700921CEA /* Shared */,
 				CA03A80228344F5500921CEA /* PlaidTransactions */,
 				CAB4BE1C282C3B9B0026301D /* PlaidAccounts */,
 				CAB4BE1B282C3B930026301D /* Goals */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		CA427B31283AC0DE00A08868 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA427B32283AC0EC00A08868 /* DateFormatter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CA62CD142838288A00849D14 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				CA62CD152838289800849D14 /* DashboardResponse.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		CA7E28872820588F0017D44E /* Goals */ = {
@@ -553,6 +578,7 @@
 				CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */,
 				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
 				CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */,
+				CA427B35283ADB6300A08868 /* TransactionDetailView.swift in Sources */,
 				CAB4BE22282C3D180026301D /* PlaidAccountViewModel.swift in Sources */,
 				CA03A8142835992F00921CEA /* BaseResponse.swift in Sources */,
 				CA7E2886282058890017D44E /* GoalCardView.swift in Sources */,
@@ -564,8 +590,10 @@
 				CAB4BE1E282C3BAB0026301D /* PlaidAccountResponse.swift in Sources */,
 				CAB4BE20282C3BB60026301D /* PlaidAccountListResponse.swift in Sources */,
 				CA18EFCC28060A990048FB52 /* UserAccountBalanceModel.swift in Sources */,
+				CA427B33283AC0EC00A08868 /* DateFormatter.swift in Sources */,
 				CA1912022800C4FA003E1126 /* ContentView.swift in Sources */,
 				CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */,
+				CA62CD162838289800849D14 /* DashboardResponse.swift in Sources */,
 				CA18EFCA280609280048FB52 /* BalanceCardView.swift in Sources */,
 				CA7E289A28206DE30017D44E /* ts_widget.intentdefinition in Sources */,
 				CAB4BE1A282C2ED00026301D /* PlaidAccountService.swift in Sources */,

@@ -15,8 +15,15 @@ struct PlaidTransactionResponse: Codable, Identifiable {
     var plaidTransactionId: String
     var accountOwner: String?
     var amount: Double
-    var authorizedDate: String?
-    var transactionDate: String?
+    var authorizedDate: Date?
+    var transactionDate: Date?
+    var transactionDateDisplay: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: transactionDate ?? Date())
+    }
     var categoryId: String?
     var primaryCategory: String?
     var detailedCategory: String?

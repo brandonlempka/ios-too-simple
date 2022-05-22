@@ -18,13 +18,15 @@ struct HomeView: View {
                     ProgressView()
                 }
                 if let transactions = plaidAccountsVM.transactionList.transactions {
-                    List {
-                        if !plaidAccountsVM.transactionsFound {
-                            Text("No transactions found.")
-                        } else {
-                            ForEach(transactions) { transaction in
-                                NavigationLink(destination: Text(transaction.name ?? "hi")) {
-                                    TransactionCardView(plaidTransaction: transaction)
+                        List {
+                            Section(header: Text("Last updated \(plaidAccountsVM.lastUpdatedDisplay)")) {
+                            if !plaidAccountsVM.transactionsFound {
+                                Text("No transactions found.")
+                            } else {
+                                ForEach(transactions) { transaction in
+                                    NavigationLink(destination: TransactionDetailView()) {
+                                        TransactionCardView(plaidTransaction: transaction)
+                                    }
                                 }
                             }
                         }
@@ -32,38 +34,62 @@ struct HomeView: View {
                     .refreshable {
                         plaidAccountsVM.forcePlaidSync()
                     }
-                    .navigationBarTitle {
-                        Button(action: {
-                            self.accountBreakdown = true
-                        }) {
-                            HStack {
-                                VStack {
-                                    Text(String(format: "$%.2f", 123.45))
-                                        .font(.headline)
-                                        .foregroundColor(-123.45 > 0
-                                                          ? .black
-                                                          : .red)
-                                    Text("Ready to Spend")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
+                    .navigationTitle(String(format: "$%.2f", plaidAccountsVM.dashboard.readyToSpend ?? 0))
+                    .navigationBarItems(trailing: Button(action: {
+                        self.accountBreakdown = true
+                    }) {
+                        Image(systemName: "info.circle")
+                    })
+                    .sheet(isPresented: $accountBreakdown, content: {
+                        VStack {
+                            List {
+                                Section(header: Text("Funding Breakdown")) {
+                                    HStack {
+                                        Text("Deposits")
+                                        Spacer()
+                                        Text(String(format: "$%.2f", plaidAccountsVM.dashboard.depositoryAmount ?? 0))
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    
+                                    HStack {
+                                        Text("Credits")
+                                        Spacer()
+                                        Text(String(format: "$%.2f", plaidAccountsVM.dashboard.creditAmount ?? 0))
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    
+                                    HStack {
+                                        Text("Goals")
+                                        Spacer()
+                                        Text(String(format: "$%.2f", plaidAccountsVM.dashboard.goalAmount ?? 0))
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    
+                                    HStack {
+                                        Text("Expenses")
+                                        Spacer()
+                                        Text(String(format: "$%.2f", plaidAccountsVM.dashboard.expenseAmount ?? 0))
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    
+                                    HStack {
+                                        Text("Ready to Spend")
+                                        Spacer()
+                                        Text(String(format: "$%.2f", plaidAccountsVM.dashboard.readyToSpend ?? 0))
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    .foregroundColor(plaidAccountsVM.dashboard.readyToSpend ?? 0 > 0
+                                                     ? .green
+                                                     : .red)
                                 }
-                                
-                                Image(systemName: "info.circle")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundColor(Color("TooSimpleTeal"))
                             }
                         }
-                        .sheet(isPresented: $accountBreakdown, content: {
-                            Text("Breakdown could go here.")
-                        })
-                    }
-                    
+                    })
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear {
-                plaidAccountsVM.getPlaidTransactions()
+                plaidAccountsVM.getDashboard()
             }
         }
     }
@@ -72,15 +98,5 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(plaidAccountsVM: PlaidAccountViewModel(), accountBreakdown: false)
-    }
-}
-
-extension View {
-    func navigationBarTitle<Content>(
-        @ViewBuilder content: () -> Content
-    ) -> some View where Content : View {
-        self.toolbar {
-            ToolbarItem(placement: .principal, content: content)
-        }
     }
 }

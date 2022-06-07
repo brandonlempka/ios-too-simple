@@ -31,9 +31,11 @@ class GoalService {
 
                 do {
                     let decoder = JSONDecoder()
-                    //let dateFormatter = DateFormatter()
-//                    dateFormatter.timeStyle = .
-                    decoder.dateDecodingStrategy = .iso8601
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                    
                     let response = try decoder.decode(GoalListResponse.self, from: data)
                     print(response)
                     completion(.success(response))

@@ -14,6 +14,7 @@ struct DashboardResponse: Codable {
     var expenseAmount: Double?
     var lastUpdated: Date?
     var transactions: [PlaidTransactionResponse]?
+    var goals: [GoalResponse]?
     var success: Bool?
     var status: Int?
     var errorMessage: String?

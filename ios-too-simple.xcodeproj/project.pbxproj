@@ -27,6 +27,8 @@
 		CA1912222800C4FB003E1126 /* ios_too_simpleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912212800C4FB003E1126 /* ios_too_simpleUITestsLaunchTests.swift */; };
 		CA1912392800D861003E1126 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1912382800D861003E1126 /* AuthService.swift */; };
 		CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA19123C2800E140003E1126 /* LoginViewModel.swift */; };
+		CA212FE3284E5CD6008D74E7 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA212FE2284E5CD6008D74E7 /* TransferView.swift */; };
+		CA212FE6284E6195008D74E7 /* CurrencyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA212FE5284E6195008D74E7 /* CurrencyTextView.swift */; };
 		CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40386F2820389D0086E88D /* GoalViewModel.swift */; };
 		CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40387228203BF00086E88D /* GoalListResponse.swift */; };
 		CA427B33283AC0EC00A08868 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B32283AC0EC00A08868 /* DateFormatter.swift */; };
@@ -117,6 +119,8 @@
 		CA1912382800D861003E1126 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		CA19123A2800DEF9003E1126 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CA19123C2800E140003E1126 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CA212FE2284E5CD6008D74E7 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
+		CA212FE5284E6195008D74E7 /* CurrencyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextView.swift; sourceTree = "<group>"; };
 		CA40386F2820389D0086E88D /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		CA40387228203BF00086E88D /* GoalListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListResponse.swift; sourceTree = "<group>"; };
 		CA427B32283AC0EC00A08868 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -302,14 +306,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CA212FE4284E617A008D74E7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CA212FE5284E6195008D74E7 /* CurrencyTextView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		CA40386E282031B20086E88D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA212FE4284E617A008D74E7 /* Shared */,
 				CA03A80A28356A8F00921CEA /* Transactions */,
 				CA03A807283454CB00921CEA /* Home */,
 				CAB4BE16282C2E150026301D /* Accounts */,
 				CA18EFC72806071A0048FB52 /* LoginView.swift */,
 				CA7E28872820588F0017D44E /* Goals */,
+				CA212FE2284E5CD6008D74E7 /* TransferView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,6 +592,7 @@
 				CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */,
 				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
 				CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */,
+				CA212FE3284E5CD6008D74E7 /* TransferView.swift in Sources */,
 				CA427B35283ADB6300A08868 /* TransactionDetailView.swift in Sources */,
 				CAB4BE22282C3D180026301D /* PlaidAccountViewModel.swift in Sources */,
 				CA03A8142835992F00921CEA /* BaseResponse.swift in Sources */,
@@ -599,6 +614,7 @@
 				CAB4BE1A282C2ED00026301D /* PlaidAccountService.swift in Sources */,
 				CA18EFC82806071A0048FB52 /* LoginView.swift in Sources */,
 				CA03A80428344F6700921CEA /* PlaidTransactionListResponse.swift in Sources */,
+				CA212FE6284E6195008D74E7 /* CurrencyTextView.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

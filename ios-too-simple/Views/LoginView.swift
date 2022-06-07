@@ -17,43 +17,44 @@ struct LoginView: View {
                 .resizable()
                 .frame(width: 260, height: 160, alignment: .center)
                 .padding(.top, 100)
-        }
-        
-        Spacer()
-        
-        Form {
-            TextField("Email", text: $loginVM.username)
-                .keyboardType(.emailAddress)
-                .onSubmit {
-                    passwordFocused = true
-                }
             
-            SecureField("Password", text: $loginVM.password)
-                .focused($passwordFocused)
-                .onSubmit {
-                    loginVM.login()
-                }
-            HStack {
-                Spacer()
-                
-                Button(action: loginVM.login) {
-                    Text("Login")
-                        .multilineTextAlignment(.center)
-                        .frame(width: 220, height: 25, alignment: .center)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .tint(Color("TooSimplePurple"))
-                .padding()
-                //.disabled(loginVM.username.isEmpty || loginVM.password.isEmpty)
-                
-                Spacer()
-            }
             
-            if (loginVM.errorMessage.count > 1) {
+            Spacer()
+            
+            Form {
+                TextField("Email", text: $loginVM.username)
+                    .keyboardType(.emailAddress)
+                    .onSubmit {
+                        passwordFocused = true
+                    }
                 
-                Text(loginVM.errorMessage)
-                    .foregroundColor(.red)
+                SecureField("Password", text: $loginVM.password)
+                    .focused($passwordFocused)
+                    .onSubmit {
+                        loginVM.login()
+                    }
+                HStack {
+                    Spacer()
+                    
+                    Button(action: loginVM.login) {
+                        Text("Login")
+                            .multilineTextAlignment(.center)
+                            .frame(width: 220, height: 25, alignment: .center)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .tint(Color("TooSimplePurple"))
+                    .padding()
+                    //.disabled(loginVM.username.isEmpty || loginVM.password.isEmpty)
+                    
+                    Spacer()
+                }
+                
+                if (loginVM.errorMessage.count > 1) {
+                    
+                    Text(loginVM.errorMessage)
+                        .foregroundColor(.red)
+                }
             }
         }
     }

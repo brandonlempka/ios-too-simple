@@ -14,7 +14,14 @@ struct GoalResponse: Codable, Identifiable {
     var goalId: String
     var goalName: String
     var goalAmount: Double
-    var desiredCompletionDate: String
+    var desiredCompletionDate: Date?
+    var desiredCompletionDateDisplay: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: desiredCompletionDate ?? Date())
+    }
     var userAccountId: String
     var fundingScheduleId: String
     var isExpense: Bool
@@ -26,7 +33,14 @@ struct GoalResponse: Codable, Identifiable {
     var amountSpent: Double
     var isAutoRefillEnabled: Bool
     var nextContributionAmount: Double
-    var nextContributionDate: String
+    var nextContributionDate: Date?
+    var nextContributionDateDisplay: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: nextContributionDate ?? Date())
+    }
     var isContributionFixed: Bool
     var isArchived: Bool
     var success: Bool?

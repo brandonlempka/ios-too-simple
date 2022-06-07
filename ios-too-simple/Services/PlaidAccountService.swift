@@ -110,7 +110,7 @@ class PlaidAccountService {
                 }
                 
                 do {
-                    if let httpResponse = response as? HTTPURLResponse {
+                    if response is HTTPURLResponse {
                         let decoder = JSONDecoder()
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -118,7 +118,6 @@ class PlaidAccountService {
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
                         
                         let response = try decoder.decode(DashboardResponse.self, from: data)
-                        print(response)
                         completion(.success(response))
                     }
                 } catch {

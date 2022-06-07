@@ -14,7 +14,7 @@ struct TransactionCardView: View {
         HStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(plaidTransaction.merchantName ?? plaidTransaction.name ?? "Unknown")
+                    Text(plaidTransaction.merchantName ?? plaidTransaction.name ?? "Unknown Merchant")
                         .fontWeight(.semibold)
                     
                     if plaidTransaction.isPending {
@@ -24,8 +24,7 @@ struct TransactionCardView: View {
                             .padding(2)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.red, lineWidth: 1)
-                            )
+                                    .stroke(.red, lineWidth: 1))
                     }
                 }
                 .font(.subheadline)

@@ -41,7 +41,7 @@ struct GoalEditView: View {
 }
 
 struct GoalEditView_Previews: PreviewProvider {
-    static var goal = GoalResponse(goalId: "123", goalName: "testing", goalAmount: 123, desiredCompletionDate: "adf", userAccountId: "123", fundingScheduleId: "124", isExpense: false, recurrenceTimeFrame: 1, creationDate: "123", isPaused: false, autoSpendMerchantName: "asdlkfasdf", amountContributed: 123.12, amountSpent: 123, isAutoRefillEnabled: false, nextContributionAmount: 123, nextContributionDate: "adsf", isContributionFixed: false, isArchived: false, success: true, status: 1, errorMessage: "123 ")
+    static var goal = GoalResponse(goalId: "123", goalName: "testing", goalAmount: 123, desiredCompletionDate: Date(), userAccountId: "123", fundingScheduleId: "124", isExpense: false, recurrenceTimeFrame: 1, creationDate: "123", isPaused: false, autoSpendMerchantName: "asdlkfasdf", amountContributed: 123.12, amountSpent: 123, isAutoRefillEnabled: false, nextContributionAmount: 123, nextContributionDate: Date(), isContributionFixed: false, isArchived: false, success: true, status: 1, errorMessage: "123 ")
     static var previews: some View {
         GoalEditView(goal: goal)
     }

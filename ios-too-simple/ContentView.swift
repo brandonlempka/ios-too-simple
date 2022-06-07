@@ -27,10 +27,16 @@ struct ContentView: View {
                         Image(systemName: "building.columns.fill")
                         Text("Accounts")
                     }
-                GoalsView(goalVM: GoalViewModel(), addMode: false)
+                GoalsView(goalVM: GoalViewModel(), addMode: false, isExpenseView: false)
                     .tabItem {
                         Image(systemName: "text.alignleft")
                         Text("Goals")
+                    }
+                
+                TransferView()
+                    .tabItem {
+                        Image(systemName: "arrow.left.arrow.right")
+                        Text("Transfer")
                     }
                 Button("Logout") {
                     loginVM.logout()
@@ -44,7 +50,6 @@ struct ContentView: View {
                     Text("Settings")
                 }
             }
-            
         }
     }
 }

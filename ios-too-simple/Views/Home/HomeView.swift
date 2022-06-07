@@ -24,7 +24,7 @@ struct HomeView: View {
                                 Text("No transactions found.")
                             } else {
                                 ForEach(transactions) { transaction in
-                                    NavigationLink(destination: TransactionDetailView()) {
+                                    NavigationLink(destination: TransactionDetailView(transaction: transaction, goals: plaidAccountsVM.goalList.goals)) {
                                         TransactionCardView(plaidTransaction: transaction)
                                     }
                                 }

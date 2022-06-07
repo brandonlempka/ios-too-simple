@@ -9,23 +9,32 @@ import SwiftUI
 
 struct GoalsView: View {
     @ObservedObject var goalVM: GoalViewModel
-    @State var addMode: Bool
+    @State var addMode: Bool = false
+    @State var isExpenseView: Bool = false
     
     var body: some View {
         NavigationView {
+            
             if goalVM.loading {
                 ProgressView()
             }
+        
             List {
-                ForEach(goalVM.goalList.goals) { goal in
-                    NavigationLink(destination: GoalDetailView(existingGoal: goal)) {
-                        GoalCardView(goal: goal)
-                    }
+                Picker ("", selection: $isExpenseView) {
+                    Text("Goals").tag(false)
+                    Text("Expenses").tag(true)
                 }
+                .pickerStyle(.segmented)
+                
+                ForEach(goalVM.goalList.goals.filter {
+                    $0.isExpense == isExpenseView }) { goal in
+                        NavigationLink(destination: GoalDetailView(existingGoal: goal)) {
+                            GoalCardView(goal: goal)
+                        }
+                    }
             }
-            .navigationTitle("Goals")
+            .navigationTitle(isExpenseView ? "Expenses" : "Goals")
             .navigationBarItems(trailing: Button(action: {
-                // button activates link
                 self.addMode = true
             } ) {
                 Image(systemName: "plus")
@@ -53,7 +62,8 @@ struct GoalsView_Previews: PreviewProvider {
         NavigationView {
             
             GoalsView(goalVM: GoalViewModel(),
-                      addMode: false)
+                      addMode: false,
+                      isExpenseView: false)
         }
     }
 }

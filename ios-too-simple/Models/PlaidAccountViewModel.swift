@@ -15,6 +15,8 @@ class PlaidAccountViewModel: ObservableObject {
     @Published var transactionsFound: Bool = false
     @Published var dashboard: DashboardResponse = DashboardResponse(transactions: [PlaidTransactionResponse]())
     @Published var lastUpdatedDisplay: String = ""
+    @Published var goalList:GoalListResponse = GoalListResponse(goals: [GoalResponse]())
+    @Published var goalsFound: Bool = false
     
     func getPlaidAccounts() {
         let defaults = UserDefaults.standard
@@ -120,6 +122,12 @@ class PlaidAccountViewModel: ObservableObject {
                                     dateFormatter.timeStyle = .medium
                                     dateFormatter.locale = Locale(identifier: "en_US")
                                     self.lastUpdatedDisplay = dateFormatter.string(from: lastUpdated)
+                                }
+                            }
+                            
+                            if let goals = apiResponse.goals {
+                                if !goals.isEmpty {
+                                    self.goalList.goals = goals
                                 }
                             }
                             self.dashboard = apiResponse

@@ -24,6 +24,13 @@ struct PlaidTransactionResponse: Codable, Identifiable {
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: transactionDate ?? Date())
     }
+    var transactionDateTimeDisplay: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: transactionDate ?? Date())
+    }
     var categoryId: String?
     var primaryCategory: String?
     var detailedCategory: String?

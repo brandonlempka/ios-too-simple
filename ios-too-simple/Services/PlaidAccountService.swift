@@ -140,22 +140,18 @@ class PlaidAccountService {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue( "Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
             
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, _, error in
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
                 guard let data = data, error == nil else {
-                    print (error!)
+                    completion(.failure(error!))
                     return
                 }
                 
                 do {
                     let decoder = JSONDecoder()
-                    //let dateFormatter = DateFormatter()
-                    //                    dateFormatter.timeStyle = .
-                    decoder.dateDecodingStrategy = .iso8601
                     let response = try decoder.decode(BaseResponse.self, from: data)
-                    print(response)
                     completion(.success(response))
                 } catch {
-                    print(error)
+                    print("hi")
                 }
             })
             task.resume()

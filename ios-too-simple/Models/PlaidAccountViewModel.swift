@@ -147,29 +147,33 @@ class PlaidAccountViewModel: ObservableObject {
         }
         
         loading = true
-        PlaidAccountService().forcePlaidResync(
-            userId: userId ?? "",
-            bearerToken: bearerToken ?? "") { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                    self.loading = false
-                case .success(let apiResponse):
-                    let success = apiResponse.success ?? false
-                    if (!success) {
+        do {
+            try? PlaidAccountService().forcePlaidResync(
+                userId: userId ?? "",
+                bearerToken: bearerToken ?? "") { result in
+                    switch result {
+                    case .failure(let error):
+                        print(error)
                         self.loading = false
-                        print("non success code")
-                    } else {
-                        DispatchQueue.main.async {
+                    case .success(let apiResponse):
+                        let success = apiResponse.success ?? false
+                        if (!success) {
                             self.loading = false
-                            if apiResponse.status != 200 {
-                                print(apiResponse.errorMessage ?? "Something went wrong")
+                            print("non success code")
+                        } else {
+                            DispatchQueue.main.async {
+                                self.loading = false
+                                if apiResponse.status != 200 {
+                                    print(apiResponse.errorMessage ?? "Something went wrong")
+                                }
+                                
+                                self.getPlaidTransactions()
                             }
-                            
-                            self.getPlaidTransactions()
                         }
                     }
                 }
-            }
+        } catch {
+            print("whatup")
+        }
     }
 }

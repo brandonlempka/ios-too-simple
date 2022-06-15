@@ -23,7 +23,11 @@ struct TransferView: View {
                 
                 TextField("Transfer Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .keyboardType(.decimalPad)
-                //.fontWeight(.bold)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            
+                        }
+                    }
                 
                 TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .keyboardType(.decimalPad)

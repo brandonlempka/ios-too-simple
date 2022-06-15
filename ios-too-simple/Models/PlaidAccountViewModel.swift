@@ -161,14 +161,12 @@ class PlaidAccountViewModel: ObservableObject {
                             self.loading = false
                             print("non success code")
                         } else {
-                            DispatchQueue.main.async {
-                                self.loading = false
-                                if apiResponse.status != 200 {
-                                    print(apiResponse.errorMessage ?? "Something went wrong")
-                                }
-                                
-                                self.getPlaidTransactions()
+                            self.loading = false
+                            if apiResponse.status != 200 {
+                                print(apiResponse.errorMessage ?? "Something went wrong")
                             }
+                            
+                            self.getDashboard()
                         }
                     }
                 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct BaseResponse: Codable {
-    var success: Bool?
     var status: Int?
     var errorMessage: String?
+    var success: Bool?
 }

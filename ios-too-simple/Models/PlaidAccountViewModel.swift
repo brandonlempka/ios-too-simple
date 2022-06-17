@@ -137,7 +137,7 @@ class PlaidAccountViewModel: ObservableObject {
             }
     }
     
-    func forcePlaidSync() {
+    func forcePlaidSync() async {
         let defaults = UserDefaults.standard
         let userId = defaults.string(forKey: "userId")
         let bearerToken = defaults.string(forKey: "jwt")
@@ -148,30 +148,15 @@ class PlaidAccountViewModel: ObservableObject {
         
         loading = true
         do {
-            try? PlaidAccountService().forcePlaidResync(
-                userId: userId ?? "",
-                bearerToken: bearerToken ?? "") { result in
-                    switch result {
-                    case .failure(let error):
-                        print(error)
-                        self.loading = false
-                    case .success(let apiResponse):
-                        let success = apiResponse.success ?? false
-                        if (!success) {
-                            self.loading = false
-                            print("non success code")
-                        } else {
-                            self.loading = false
-                            if apiResponse.status != 200 {
-                                print(apiResponse.errorMessage ?? "Something went wrong")
-                            }
-                            
-                            self.getDashboard()
-                        }
-                    }
+            let response = try await PlaidAccountService().forcePlaidResync(userId: userId ?? "", bearerToken: bearerToken ?? "")
+            loading = false
+            if let isSuccessful = response.success {
+                if isSuccessful {
+                    getDashboard()
                 }
+            }
         } catch {
-            print("whatup")
+            
         }
     }
 }

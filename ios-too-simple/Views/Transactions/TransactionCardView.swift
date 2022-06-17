@@ -30,7 +30,6 @@ struct TransactionCardView: View {
                 .font(.subheadline)
                 
                 HStack {
-                    
                     if let transactionDate = plaidTransaction.transactionDateDisplay {
                         Text(transactionDate)
                     }
@@ -38,11 +37,11 @@ struct TransactionCardView: View {
                     if let accountName = plaidTransaction.plaidAccountDisplayName {
                         Text("•")
                         Text(accountName)
-                        
                     }
                 }
                 .foregroundColor(.gray)
                 .font(.subheadline)
+                
                 if let goalName = plaidTransaction.spendingFromGoalId {
                     Text("Spent from \(goalName)")
                         .foregroundColor(.gray)

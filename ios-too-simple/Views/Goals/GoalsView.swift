@@ -14,7 +14,6 @@ struct GoalsView: View {
     
     var body: some View {
         NavigationView {
-            
             if goalVM.loading {
                 ProgressView()
             }

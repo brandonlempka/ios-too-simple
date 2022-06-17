@@ -13,6 +13,7 @@ class LoginViewModel: ObservableObject {
     var password: String = ""
     @Published var isAuthenticated: Bool = false
     @Published var errorMessage: String = ""
+    @Published var loading: Bool = false
     
     init() {
         let defaults = UserDefaults.standard
@@ -33,28 +34,31 @@ class LoginViewModel: ObservableObject {
             catch let parseError {
                 print(parseError)
             }
-            
         }
     }
     
     func login() {
-    let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
+        loading = true
         
         AuthService().login(username: username, password: password) { result in
             switch result {
             case .success(let token):
                 if token.success ?? false {
                     defaults.setValue(token.bearerToken, forKey: "jwt")
-
+                    
                     do {
                         let jwt = try decode(jwt: token.bearerToken!)
-                            //print(jwt)
-                            //print(jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"))
-                            defaults.setValue(
-                                jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").rawValue,
-                                forKey: "userId")
+                        //print(jwt)
+                        //print(jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"))
+                        defaults.setValue(
+                            jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").rawValue,
+                            forKey: "userId")
+                        
+                        self.loading = false
                     }
                     catch let parseError {
+                        self.loading = false
                         print(parseError)
                     }
                     
@@ -62,10 +66,12 @@ class LoginViewModel: ObservableObject {
                     DispatchQueue.main.async { self.errorMessage = "" }
                     
                 } else {
+                    self.loading = false
                     print(token.errorMessage ?? "")
                     DispatchQueue.main.async { self.errorMessage = token.errorMessage ?? "" }
                 }
             case .failure(let error):
+                self.loading = false
                 print(error)
             }
         }
@@ -73,7 +79,7 @@ class LoginViewModel: ObservableObject {
     
     func logout() {
         let defaults = UserDefaults.standard
-
+        
         defaults.removeObject(forKey: "jwt")
         DispatchQueue.main.async { self.isAuthenticated = false }
     }

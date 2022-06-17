@@ -33,6 +33,9 @@
 		CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40387228203BF00086E88D /* GoalListResponse.swift */; };
 		CA427B33283AC0EC00A08868 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B32283AC0EC00A08868 /* DateFormatter.swift */; };
 		CA427B35283ADB6300A08868 /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B34283ADB6300A08868 /* TransactionDetailView.swift */; };
+		CA535B06285AA8ED00DEA841 /* TransfersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */; };
+		CA535B08285CF6D600DEA841 /* BudgetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA535B07285CF6D600DEA841 /* BudgetingService.swift */; };
+		CA535B0B285D1B3500DEA841 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CA535B0A285D1B3500DEA841 /* AlertToast */; };
 		CA62CD162838289800849D14 /* DashboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62CD152838289800849D14 /* DashboardResponse.swift */; };
 		CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77B287280749C700FBD367 /* GoalResponse.swift */; };
 		CA7E2882282048610017D44E /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2881282048610017D44E /* GoalsView.swift */; };
@@ -125,6 +128,8 @@
 		CA40387228203BF00086E88D /* GoalListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListResponse.swift; sourceTree = "<group>"; };
 		CA427B32283AC0EC00A08868 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		CA427B34283ADB6300A08868 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
+		CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewModel.swift; sourceTree = "<group>"; };
+		CA535B07285CF6D600DEA841 /* BudgetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingService.swift; sourceTree = "<group>"; };
 		CA62CD152838289800849D14 /* DashboardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardResponse.swift; sourceTree = "<group>"; };
 		CA77B287280749C700FBD367 /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
 		CA7E2881282048610017D44E /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA535B0B285D1B3500DEA841 /* AlertToast in Frameworks */,
 				CAD138E12807449B000077B6 /* JWTDecode in Frameworks */,
 				CAB4BE25282C4D580026301D /* LinkKit in Frameworks */,
 			);
@@ -290,6 +296,7 @@
 				CA1912382800D861003E1126 /* AuthService.swift */,
 				CAD138DD280742DA000077B6 /* GoalService.swift */,
 				CAB4BE19282C2ED00026301D /* PlaidAccountService.swift */,
+				CA535B07285CF6D600DEA841 /* BudgetingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				CA18EFCB28060A990048FB52 /* UserAccountBalanceModel.swift */,
 				CA40386F2820389D0086E88D /* GoalViewModel.swift */,
 				CAB4BE21282C3D180026301D /* PlaidAccountViewModel.swift */,
+				CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -434,6 +442,7 @@
 			packageProductDependencies = (
 				CAD138E02807449B000077B6 /* JWTDecode */,
 				CAB4BE24282C4D580026301D /* LinkKit */,
+				CA535B0A285D1B3500DEA841 /* AlertToast */,
 			);
 			productName = "ios-too-simple";
 			productReference = CA1911FC2800C4FA003E1126 /* ios-too-simple.app */;
@@ -530,6 +539,7 @@
 			packageReferences = (
 				CAD138DF2807449B000077B6 /* XCRemoteSwiftPackageReference "JWTDecode.swift" */,
 				CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */,
+				CA535B09285D1B3500DEA841 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = CA1911FD2800C4FA003E1126 /* Products */;
 			projectDirPath = "";
@@ -590,6 +600,7 @@
 				CA1912092800C4FB003E1126 /* Persistence.swift in Sources */,
 				CAD138DE280742DA000077B6 /* GoalService.swift in Sources */,
 				CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */,
+				CA535B06285AA8ED00DEA841 /* TransfersViewModel.swift in Sources */,
 				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
 				CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */,
 				CA212FE3284E5CD6008D74E7 /* TransferView.swift in Sources */,
@@ -616,6 +627,7 @@
 				CA03A80428344F6700921CEA /* PlaidTransactionListResponse.swift in Sources */,
 				CA212FE6284E6195008D74E7 /* CurrencyTextView.swift in Sources */,
 				CA1912002800C4FA003E1126 /* ios_too_simpleApp.swift in Sources */,
+				CA535B08285CF6D600DEA841 /* BudgetingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1037,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CA535B09285D1B3500DEA841 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/plaid/plaid-link-ios";
@@ -1044,6 +1064,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CA535B0A285D1B3500DEA841 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA535B09285D1B3500DEA841 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		CAB4BE24282C4D580026301D /* LinkKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CAB4BE23282C4D580026301D /* XCRemoteSwiftPackageReference "plaid-link-ios" */;

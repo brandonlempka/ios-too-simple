@@ -37,9 +37,13 @@ struct LoginView: View {
                     Spacer()
                     
                     Button(action: loginVM.login) {
-                        Text("Login")
-                            .multilineTextAlignment(.center)
-                            .frame(width: 220, height: 25, alignment: .center)
+                        if loginVM.loading {
+                            ProgressView()
+                        } else {
+                            Text("Login")
+                                .multilineTextAlignment(.center)
+                                .frame(width: 220, height: 25, alignment: .center)
+                        }
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
@@ -51,7 +55,6 @@ struct LoginView: View {
                 }
                 
                 if (loginVM.errorMessage.count > 1) {
-                    
                     Text(loginVM.errorMessage)
                         .foregroundColor(.red)
                 }

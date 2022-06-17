@@ -32,7 +32,7 @@ struct HomeView: View {
                         }
                     }
                     .refreshable {
-                        plaidAccountsVM.forcePlaidSync()
+                        await plaidAccountsVM.forcePlaidSync()
                     }
                     .navigationTitle(String(format: "$%.2f", plaidAccountsVM.dashboard.readyToSpend ?? 0))
                     .navigationBarItems(trailing: Button(action: {

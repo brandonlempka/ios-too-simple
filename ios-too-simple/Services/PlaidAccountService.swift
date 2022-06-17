@@ -127,12 +127,27 @@ class PlaidAccountService {
             task.resume()
         }
     
+//    @available(*, renamed: "forcePlaidResync(userId:bearerToken:)")
+//    func forcePlaidResync(
+//        userId: String,
+//        bearerToken: String,
+//        completion: @escaping (Result<BaseResponse, Error>) -> Void) {
+//            Task {
+//                do {
+//                    let result = try await forcePlaidResync(userId: userId, bearerToken: bearerToken)
+//                    completion(.success(result))
+//                } catch {
+//                    completion(.failure(error))
+//                }
+//            }
+//        }
+    
+    
     func forcePlaidResync(
         userId: String,
-        bearerToken: String,
-        completion: @escaping (Result<BaseResponse, Error>) -> Void) {
+        bearerToken: String) async throws -> BaseResponse {
             guard let url = URL(string: "https://api.brandonlempka.com/api/Plaid/forcePlaidSync/\(userId)") else {
-                return
+                return BaseResponse()
             }
             
             var request = URLRequest(url: url)
@@ -140,20 +155,22 @@ class PlaidAccountService {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue( "Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
             
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
-                guard let data = data, error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-                
-                do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(BaseResponse.self, from: data)
-                    completion(.success(response))
-                } catch {
-                    print("hi")
-                }
-            })
-            task.resume()
+            return try await withCheckedThrowingContinuation { continuation in
+                let task = URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+                    guard let data1 = data, error == nil else {
+                        continuation.resume(with: .failure(error!))
+                        return
+                    }
+                    
+                    do {
+                        let decoder = JSONDecoder()
+                        let response = try decoder.decode(BaseResponse.self, from: data1)
+                        continuation.resume(with: .success(response))
+                    } catch {
+                        print("hi")
+                    }
+                })
+                task.resume()
+            }
         }
 }

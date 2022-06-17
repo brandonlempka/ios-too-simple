@@ -6,43 +6,91 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct TransferView: View {
-    @State private var amount: Decimal?
-    @State private var amountString = ""
+    @ObservedObject var transfersVM: TransfersViewModel
+
     private let numberFormatter: NumberFormatter
     
     init() {
         numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.maximumFractionDigits = 2
+        transfersVM = TransfersViewModel()
     }
     var body: some View {
         NavigationView {
-            Form {
-                
-                TextField("Transfer Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                    .keyboardType(.decimalPad)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            
+            //            if transfersVM.loading {
+            //                ProgressView()
+            //            }
+            
+            if transfersVM.goalList.goals.count > 0 {
+                Form {
+                    Picker("From Goal", selection: $transfersVM.fromGoalId, content: {
+                        ForEach(transfersVM.goalList.goals) { goal in
+                            let goalBalance = String(format: "$%.2f", goal.amountContributed - goal.amountSpent)
+                            Text("\(goal.goalName) - \(goalBalance)")
+                        }
+                    })
+                    
+                    Picker("To Goal", selection: $transfersVM.toGoalId, content: {
+                        ForEach(transfersVM.goalList.goals) { goal in
+                            let goalBalance = String(format: "$%.2f", goal.amountContributed - goal.amountSpent)
+                            Text("\(goal.goalName) - \(goalBalance)")
+                        }
+                    })
+                    
+                    TextField("Transfer Amount", value: $transfersVM.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        .keyboardType(.decimalPad)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .keyboard) {
+                            }
+                        }
+                    
+                    TextField("Note", text: $transfersVM.note)
+                    //.lineLimit(5...10) <-- turn on for ios16
+                    
+                    Button(action: {
+                        Task {
+                            await transfersVM
+                                .submitTransfer()
+                        }
+                    }) {
+                        if transfersVM.buttonLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                        } else {
+                            Text("Submit").frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
-                
-                TextField("Amount", value: $amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                    .keyboardType(.decimalPad)
-                
-                Button(action: {
-                    amount = 0
-                }) {
-                    Text("Submit").frame(minWidth: 0, maxWidth: .infinity)
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .padding()
                 }
-                .buttonStyle(.borderedProminent)
-                
+
+                .navigationBarTitle("Transfer")
             }
-            .navigationBarTitle("Transfer")
+        }
+        .toast(isPresenting: $transfersVM.success, duration: 2, tapToDismiss: true) {
+            AlertToast(displayMode: .banner(.slide),
+                       type: .complete(Color(UIColor.systemBackground)),
+                       title: "Successfully transferred",
+                       style: AlertToast.AlertStyle.style(backgroundColor: .green, titleColor: Color(UIColor.systemBackground)))
+        }
+        
+        .toast(isPresenting: $transfersVM.isErrored, duration: 2, tapToDismiss: true) {
+            AlertToast(displayMode: .banner(.slide),
+                       type: .complete(Color(UIColor.systemBackground)),
+                       title: "Error",
+                       subTitle: transfersVM.errorMessage,
+                       style: AlertToast.AlertStyle.style(backgroundColor: .red, titleColor: Color(UIColor.systemBackground)))
         }
         .navigationBarHidden(false)
+        .onAppear {
+            transfersVM.getGoals()
+        }
     }
 }
 

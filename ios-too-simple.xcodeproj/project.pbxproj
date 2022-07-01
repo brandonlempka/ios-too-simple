@@ -29,6 +29,7 @@
 		CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA19123C2800E140003E1126 /* LoginViewModel.swift */; };
 		CA212FE3284E5CD6008D74E7 /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA212FE2284E5CD6008D74E7 /* TransferView.swift */; };
 		CA212FE6284E6195008D74E7 /* CurrencyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA212FE5284E6195008D74E7 /* CurrencyTextView.swift */; };
+		CA25BA94286A64D90071E32B /* TransactionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25BA93286A64D90071E32B /* TransactionDetailViewModel.swift */; };
 		CA4038702820389D0086E88D /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40386F2820389D0086E88D /* GoalViewModel.swift */; };
 		CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA40387228203BF00086E88D /* GoalListResponse.swift */; };
 		CA427B33283AC0EC00A08868 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA427B32283AC0EC00A08868 /* DateFormatter.swift */; };
@@ -36,6 +37,7 @@
 		CA535B06285AA8ED00DEA841 /* TransfersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */; };
 		CA535B08285CF6D600DEA841 /* BudgetingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA535B07285CF6D600DEA841 /* BudgetingService.swift */; };
 		CA535B0B285D1B3500DEA841 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = CA535B0A285D1B3500DEA841 /* AlertToast */; };
+		CA535B0F285E5B5E00DEA841 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA535B0E285E5B5E00DEA841 /* AccountDetailView.swift */; };
 		CA62CD162838289800849D14 /* DashboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA62CD152838289800849D14 /* DashboardResponse.swift */; };
 		CA77B288280749C700FBD367 /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA77B287280749C700FBD367 /* GoalResponse.swift */; };
 		CA7E2882282048610017D44E /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7E2881282048610017D44E /* GoalsView.swift */; };
@@ -124,12 +126,14 @@
 		CA19123C2800E140003E1126 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CA212FE2284E5CD6008D74E7 /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
 		CA212FE5284E6195008D74E7 /* CurrencyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextView.swift; sourceTree = "<group>"; };
+		CA25BA93286A64D90071E32B /* TransactionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModel.swift; sourceTree = "<group>"; };
 		CA40386F2820389D0086E88D /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
 		CA40387228203BF00086E88D /* GoalListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListResponse.swift; sourceTree = "<group>"; };
 		CA427B32283AC0EC00A08868 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		CA427B34283ADB6300A08868 /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewModel.swift; sourceTree = "<group>"; };
 		CA535B07285CF6D600DEA841 /* BudgetingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingService.swift; sourceTree = "<group>"; };
+		CA535B0E285E5B5E00DEA841 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		CA62CD152838289800849D14 /* DashboardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardResponse.swift; sourceTree = "<group>"; };
 		CA77B287280749C700FBD367 /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
 		CA7E2881282048610017D44E /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				CA40386F2820389D0086E88D /* GoalViewModel.swift */,
 				CAB4BE21282C3D180026301D /* PlaidAccountViewModel.swift */,
 				CA535B05285AA8ED00DEA841 /* TransfersViewModel.swift */,
+				CA25BA93286A64D90071E32B /* TransactionDetailViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB4BE17282C2E2E0026301D /* AccountsView.swift */,
+				CA535B0E285E5B5E00DEA841 /* AccountDetailView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -604,10 +610,12 @@
 				CA19123D2800E140003E1126 /* LoginViewModel.swift in Sources */,
 				CA7E28A32820B3D00017D44E /* GoalEditView.swift in Sources */,
 				CA212FE3284E5CD6008D74E7 /* TransferView.swift in Sources */,
+				CA25BA94286A64D90071E32B /* TransactionDetailViewModel.swift in Sources */,
 				CA427B35283ADB6300A08868 /* TransactionDetailView.swift in Sources */,
 				CAB4BE22282C3D180026301D /* PlaidAccountViewModel.swift in Sources */,
 				CA03A8142835992F00921CEA /* BaseResponse.swift in Sources */,
 				CA7E2886282058890017D44E /* GoalCardView.swift in Sources */,
+				CA535B0F285E5B5E00DEA841 /* AccountDetailView.swift in Sources */,
 				CA7E2882282048610017D44E /* GoalsView.swift in Sources */,
 				CA1912392800D861003E1126 /* AuthService.swift in Sources */,
 				CA40387328203BF00086E88D /* GoalListResponse.swift in Sources */,

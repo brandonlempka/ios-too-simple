@@ -53,7 +53,7 @@ class PlaidAccountViewModel: ObservableObject {
             }
     }
     
-    func getPlaidTransactions() {
+    func getPlaidTransactions(accountFilter: String?) {
         let defaults = UserDefaults.standard
         let userId = defaults.string(forKey: "userId")
         let bearerToken = defaults.string(forKey: "jwt")
@@ -65,7 +65,8 @@ class PlaidAccountViewModel: ObservableObject {
         loading = true
         PlaidAccountService().getPlaidTransactionsByUserId(
             userId: userId ?? "",
-            bearerToken: bearerToken ?? "") { result in
+            bearerToken: bearerToken ?? "",
+            accountFilter: accountFilter) { result in
                 switch result {
                 case .failure(let error):
                     print(error)

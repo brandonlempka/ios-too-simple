@@ -42,7 +42,7 @@ struct TransactionCardView: View {
                 .foregroundColor(.gray)
                 .font(.subheadline)
                 
-                if let goalName = plaidTransaction.spendingFromGoalId {
+                if let goalName = plaidTransaction.spendingFromGoalName {
                     Text("Spent from \(goalName)")
                         .foregroundColor(.gray)
                         .font(.subheadline)

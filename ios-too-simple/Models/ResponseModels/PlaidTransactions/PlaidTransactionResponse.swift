@@ -60,6 +60,7 @@ struct PlaidTransactionResponse: Codable, Identifiable {
     var transactionType: String?
     var unofficialCurrencyCode: String?
     var spendingFromGoalId: String?
+    var spendingFromGoalName: String?
     var plaidAccountId: String
     var plaidAccountDisplayName: String
     var userAccountId: String

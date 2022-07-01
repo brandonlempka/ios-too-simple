@@ -21,9 +21,9 @@ struct TransferView: View {
     }
     var body: some View {
         NavigationView {
-            //            if transfersVM.loading {
-            //                ProgressView()
-            //            }
+//            if transfersVM.loading {
+//                ProgressView()
+//            }
             
             if transfersVM.goalList.goals.count > 0 {
                 Form {
@@ -69,7 +69,6 @@ struct TransferView: View {
                     .controlSize(.large)
                     .padding()
                 }
-
                 .navigationBarTitle("Transfer")
             }
         }

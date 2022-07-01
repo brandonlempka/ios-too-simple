@@ -11,7 +11,7 @@ struct TransactionDetailView: View {
     @State var transaction: PlaidTransactionResponse
     @State var goals: [GoalResponse]
     @State private var isPresentingEditView = false
-    @State var spendingGoal = "Ready to Spend"
+    @State var spendingGoal = ""
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -66,14 +66,19 @@ struct TransactionDetailView: View {
                         Picker("Spending From", selection: $spendingGoal, content: {
                             ForEach(goals) { goal in
                                 let goalBalance = String(format: "$%.2f", goal.amountContributed - goal.amountSpent)
-                                Text("\(goal.goalName) - \(goalBalance)")
+                                if goal.goalId == "" {
+                                    Text("\(goal.goalName)")
+                                } else {
+                                    Text("\(goal.goalName) - \(goalBalance)")
+                                }
                             }
                         })
                         .onChange(of: spendingGoal) { goal in
-                            transaction.spendingFromGoalId = goal
-                        }
-                        .onAppear {
-                            spendingGoal = transaction.spendingFromGoalId ?? "Ready to Spend"
+                            let transactionVM = TransactionDetailViewModel()
+                            let goalId:String = goal
+                            Task {
+                                await transactionVM.updateTransaction(transactionId: transaction.id, goalId: goalId)
+                            }
                         }
                     }
                     .accessibilityElement(children: .combine)
@@ -109,6 +114,9 @@ struct TransactionDetailView: View {
             .navigationBarItems(leading: backButton, trailing: Button("Edit") {
                 self.isPresentingEditView = true
             })
+        }
+        .onAppear {
+            self.goals.insert(GoalResponse(goalName: "Ready to Spend"), at: 0)
         }
     }
 }

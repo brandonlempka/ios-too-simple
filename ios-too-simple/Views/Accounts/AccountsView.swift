@@ -21,7 +21,7 @@ struct AccountsView: View {
             }
             List {
                 ForEach(plaidAccountsVM.accountList.plaidAccounts) { account in
-                    NavigationLink(destination: Text("Next!")) {
+                    NavigationLink(destination: AccountDetailView(account: account)) {
                         Text(account.nickName ?? account.name)
                     }
                 }
